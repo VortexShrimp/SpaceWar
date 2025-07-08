@@ -8,10 +8,29 @@ namespace Assets.Scripts.Game
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]
+        [Tooltip("Movement speed of the player.")]
         float _moveSpeed;
 
         [SerializeField]
+        [Tooltip("Maximum health of the player.")]
+        float _maxHealth;
+        float _currentHealth;
+
+        [SerializeField]
+        [Tooltip("Projectile prefab to be instantiated.")]
         GameObject _projectilePrefab;
+
+        /// <summary>
+        /// Flag to determine if the player can take collision damage.
+        /// This is used to prevent multiple collisions from taking damage in a short time.
+        /// </summary>
+        bool _canTakeCollisionDamage;
+
+        /// <summary>
+        /// Cooldown time for taking collision damage.
+        /// Time inbetween collisions where the player cannot take damage.
+        /// </summary>
+        const float _COLLISION_DAMAGE_COOLDOWN = 1f;
 
         Rigidbody2D _rigidbody2D;
         Vector2 _movement;
@@ -19,6 +38,10 @@ namespace Assets.Scripts.Game
         protected void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
+
+            // Initialize health.
+            _currentHealth = _maxHealth;
+            _canTakeCollisionDamage = true;
         }
 
         protected void Update()
@@ -42,6 +65,35 @@ namespace Assets.Scripts.Game
         {
             // Move the player in FixedUpdate for physics consistency.
             _rigidbody2D.AddForce(_movement * _moveSpeed * Time.fixedDeltaTime);
+        }
+
+        protected void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Asteroid"))
+            {
+                if (_canTakeCollisionDamage == false)
+                {
+                    return;
+                }
+
+                AsteroidController asteroid = collision.gameObject.GetComponent<AsteroidController>();
+                _currentHealth -= asteroid.PlayerCollisionDamage;
+
+                // Start cooldown for collision damage.
+                _canTakeCollisionDamage = false;
+                Invoke(nameof(ResetCollisionDamageCooldown), _COLLISION_DAMAGE_COOLDOWN);
+
+                if (_currentHealth <= 0f)
+                {
+                    // HACK: Need to implement a game over state or respawn logic.
+                    Destroy(gameObject);
+                }
+            }
+        }
+
+        void ResetCollisionDamageCooldown()
+        {
+            _canTakeCollisionDamage = true;
         }
     }
 }

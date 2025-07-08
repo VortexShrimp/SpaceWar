@@ -14,11 +14,7 @@ namespace Assets.Scripts.Game
 
         [SerializeField]
         float _damage;
-
-        public float Damage
-        {
-            get { return _damage; }
-        }
+        public float Damage => _damage;
 
         protected void Start()
         {

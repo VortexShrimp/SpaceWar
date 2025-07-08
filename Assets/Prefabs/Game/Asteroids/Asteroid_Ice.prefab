@@ -173,6 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationSpeed: 50
   _maxHealth: 100
+  _playerCollisionDamage: 25
 --- !u!1 &4532634567959496897
 GameObject:
   m_ObjectHideFlags: 0

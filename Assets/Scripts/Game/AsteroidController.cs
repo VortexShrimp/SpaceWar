@@ -9,17 +9,34 @@ namespace Assets.Scripts.Game
     [RequireComponent(typeof(Collider2D))]
     public class AsteroidController : MonoBehaviour
     {
-        [SerializeField]
+        const float _MIN_ROTATION_SPEED = 25f;
+        const float _MAX_ROTATION_SPEED = 75f;
         float _rotationSpeed;
 
         [SerializeField]
+        [Tooltip("Maximum health of the asteroid.")]
         float _maxHealth;
         float _currentHealth;
+
+        [SerializeField]
+        [Tooltip("Damage dealt to the player on collision.")]
+        float _playerCollisionDamage;
+        public float PlayerCollisionDamage => _playerCollisionDamage;
 
         GameObject[] _spriteStates;
 
         protected void Awake()
         {
+            // Get a random rotation speed for the asteroid.
+            _rotationSpeed = Random.Range(_MIN_ROTATION_SPEED, _MAX_ROTATION_SPEED);
+
+            // Get a random direction for the rotation.
+            if (Random.value < 0.5f)
+            {
+                _rotationSpeed = -_rotationSpeed;
+            }
+
+            // Set the health.
             _currentHealth = _maxHealth;
 
             // Initialize the sprite states.

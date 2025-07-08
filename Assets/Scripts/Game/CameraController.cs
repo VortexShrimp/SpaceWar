@@ -7,27 +7,28 @@ namespace Assets.Scripts.Game
     /// </summary>
     public class CameraController : MonoBehaviour
     {
-        [SerializeField]
         /// <summary>
         /// The player Transform that the camera will follow.
         /// </summary>
+        [SerializeField]
+        [Tooltip("The player Transform that the camera will follow.")]
         Transform _player;
 
         /// <summary>
         /// The camera component attached to this GameObject.
-        /// This is used to control the camera's zoom.
+        /// This is used to control the camera's zoom and other things.
         /// </summary>
         Camera _camera;
 
-        const float MIN_ZOOM = 5f;
-        const float MAX_ZOOM = 15f;
+        const float _MIN_ZOOM = 5f;
+        const float _MAX_ZOOM = 15f;
 
         protected void Awake()
         {
             _camera = GetComponent<Camera>();
 
             // Set the initial zoom level to the midpoint between MIN_ZOOM and MAX_ZOOM.
-            _camera.orthographicSize = (MIN_ZOOM + MAX_ZOOM) * 0.5f;
+            _camera.orthographicSize = (_MIN_ZOOM + _MAX_ZOOM) * 0.5f;
         }
 
         protected void Update()
@@ -36,14 +37,17 @@ namespace Assets.Scripts.Game
             transform.position = new Vector3(_player.position.x, _player.position.y, transform.position.z);
 
             // Zoom the camera in and out based on the mouse scroll wheel.
-            UpdateZoom();
+            HandleMouseZoom();
         }
 
-        void UpdateZoom()
+        /// <summary>
+        /// Handles zooming the camera in and out using the mouse scroll wheel.
+        /// </summary>
+        void HandleMouseZoom()
         {
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             _camera.orthographicSize -= scroll;
-            _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize, MIN_ZOOM, MAX_ZOOM);
+            _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize, _MIN_ZOOM, _MAX_ZOOM);
         }
     }
 }
