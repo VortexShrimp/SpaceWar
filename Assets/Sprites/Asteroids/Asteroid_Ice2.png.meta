@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 478d2f81729db3f45a57d3f4cbceceac
+guid: a9664000f7a6c444ebfc90943c451299
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6263091795111771235
-    second: ice2_0
+      213: -7653837368095709110
+    second: Asteroid_Ice2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ice2_0
+      name: Asteroid_Ice2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9303b412370519a0800000000000000
-      internalID: -6263091795111771235
+      spriteID: a486b0a277b18c590800000000000000
+      internalID: -7653837368095709110
       vertices: []
       indices: 
       edges: []
