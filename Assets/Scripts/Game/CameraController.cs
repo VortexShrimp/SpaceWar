@@ -7,5 +7,12 @@ namespace Assets.Scripts.Game
     /// </summary>
     public class CameraController : MonoBehaviour
     {
+        [SerializeField]
+        Transform _player;
+
+        void Update()
+        {
+            transform.position = new Vector3(_player.position.x, _player.position.y, transform.position.z);
+        }
     }
 }
