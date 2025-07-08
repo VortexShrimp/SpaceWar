@@ -13,6 +13,9 @@ namespace Assets.Scripts.Game
         [SerializeField]
         float _moveSpeed;
 
+        [SerializeField]
+        GameObject _projectilePrefab;
+
         void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -27,6 +30,11 @@ namespace Assets.Scripts.Game
             Vector2 mouseScreenPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = (mouseScreenPosition - (Vector2)transform.position).normalized;
             transform.up = direction;
+
+            if (Input.GetKeyDown(KeyCode.Mouse0) == true)
+            {
+                Instantiate(_projectilePrefab, transform.position, transform.rotation);
+            }
         }
 
         void FixedUpdate()
