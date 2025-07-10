@@ -72,7 +72,7 @@ namespace Assets.Scripts.Game
             _rigidbody2D.AddForce(_movement * _accelaration * Time.fixedDeltaTime, ForceMode2D.Force);
 
             // Clamp the player's velocity to prevent excessive speed.
-            if (_rigidbody2D.linearVelocity.magnitude > _maxHealth)
+            if (_rigidbody2D.linearVelocity.magnitude > _maxSpeed)
             {
                 _rigidbody2D.linearVelocity = _rigidbody2D.linearVelocity.normalized * _maxSpeed;
             }
