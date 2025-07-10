@@ -9,7 +9,12 @@ namespace Assets.Scripts.Game
     {
         [SerializeField]
         [Tooltip("Movement speed of the player.")]
-        float _moveSpeed;
+        float _accelaration;
+
+        [SerializeField]
+        [Tooltip("Maximum speed of the player.")]
+        [Range(0f, 100f)]
+        float _maxSpeed;
 
         [SerializeField]
         [Tooltip("Maximum health of the player.")]
@@ -64,7 +69,13 @@ namespace Assets.Scripts.Game
         protected void FixedUpdate()
         {
             // Move the player in FixedUpdate for physics consistency.
-            _rigidbody2D.AddForce(_movement * _moveSpeed * Time.fixedDeltaTime);
+            _rigidbody2D.AddForce(_movement * _accelaration * Time.fixedDeltaTime, ForceMode2D.Force);
+
+            // Clamp the player's velocity to prevent excessive speed.
+            if (_rigidbody2D.linearVelocity.magnitude > _maxHealth)
+            {
+                _rigidbody2D.linearVelocity = _rigidbody2D.linearVelocity.normalized * _maxSpeed;
+            }
         }
 
         protected void OnCollisionEnter2D(Collision2D collision)
