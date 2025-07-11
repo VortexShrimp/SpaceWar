@@ -61,15 +61,18 @@ namespace Assets.Scripts.Game
                 Destroy(collision.gameObject);
 
                 // Currently hardcoded, needs to be changed to use a more dynamic approach.
-                if (_currentHealth > 30f && _currentHealth <= 60f)
+                if (_currentHealth > 66f && _currentHealth <= 99f)
                 {
                     SetSpriteStateActive(1);
                 }
-                else if (_currentHealth > 0 && _currentHealth <= 30f)
+                else if (_currentHealth > 33 && _currentHealth <= 66f)
                 {
                     SetSpriteStateActive(2);
                 }
-
+                else if (_currentHealth <= 33)
+                {
+                    SetSpriteStateActive(3);
+                }
                 if (_currentHealth <= 0)
                 {
                     Destroy(gameObject);

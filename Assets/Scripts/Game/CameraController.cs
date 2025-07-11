@@ -14,14 +14,18 @@ namespace Assets.Scripts.Game
         [Tooltip("The player Transform that the camera will follow.")]
         Transform _player;
 
+        [SerializeField]
+        [Tooltip("The zoom ratio")]
+        float _zoomRatio;
+
         /// <summary>
         /// The camera component attached to this GameObject.
         /// This is used to control the camera's zoom and other things.
         /// </summary>
         Camera _camera;
 
-        const float _MIN_ZOOM = 5f;
-        const float _MAX_ZOOM = 15f;
+        const float _MIN_ZOOM = 6f;
+        const float _MAX_ZOOM = 12f;
 
         protected void Awake()
         {
@@ -46,7 +50,7 @@ namespace Assets.Scripts.Game
         void HandleMouseZoom()
         {
             float scroll = Input.GetAxis("Mouse ScrollWheel");
-            _camera.orthographicSize -= scroll;
+            _camera.orthographicSize -= scroll * _zoomRatio;
             _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize, _MIN_ZOOM, _MAX_ZOOM);
         }
     }

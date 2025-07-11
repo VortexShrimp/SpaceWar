@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5447050519934265106
+--- !u!1 &7168739943829511992
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2535102139038468071}
-  - component: {fileID: 1769456713452598599}
-  - component: {fileID: 6014209425153965129}
-  - component: {fileID: 2656342439009417181}
+  - component: {fileID: 6939787551407919944}
+  - component: {fileID: 7706775511149396039}
+  - component: {fileID: 6434152339005045124}
+  - component: {fileID: 43268366698114933}
   m_Layer: 0
   m_Name: Asteroid_Ice2
   m_TagString: Asteroid
@@ -19,28 +19,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2535102139038468071
+--- !u!4 &6939787551407919944
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5447050519934265106}
+  m_GameObject: {fileID: 7168739943829511992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8.73699, y: -2.2616873, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1769456713452598599
+--- !u!58 &7706775511149396039
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5447050519934265106}
+  m_GameObject: {fileID: 7168739943829511992}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -70,13 +70,13 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.48
---- !u!114 &6014209425153965129
+--- !u!114 &6434152339005045124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5447050519934265106}
+  m_GameObject: {fileID: 7168739943829511992}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 517e934e9eab9154e8396f8898df4060, type: 3}
@@ -87,14 +87,15 @@ MonoBehaviour:
   - {fileID: -856085545168688419, guid: 0e816e879bf32504482bf47268af3a93, type: 3}
   - {fileID: -7653837368095709110, guid: a9664000f7a6c444ebfc90943c451299, type: 3}
   - {fileID: -8034294123212915429, guid: e2bc0f35023f04548ba6be0ec4245372, type: 3}
+  - {fileID: 1643710735407110213, guid: 31873f43bcc984348b04bc34aa5e354b, type: 3}
   _playerCollisionDamage: 25
---- !u!212 &2656342439009417181
+--- !u!212 &43268366698114933
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5447050519934265106}
+  m_GameObject: {fileID: 7168739943829511992}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
