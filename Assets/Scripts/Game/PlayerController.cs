@@ -36,7 +36,7 @@ namespace Assets.Scripts.Game
         /// Time inbetween collisions where the player cannot take damage.
         /// </summary>
         const float _COLLISION_DAMAGE_COOLDOWN = 1f;
-
+        
         Rigidbody2D _rigidbody2D;
         Vector2 _movement;
 
@@ -69,7 +69,7 @@ namespace Assets.Scripts.Game
         protected void FixedUpdate()
         {
             // Move the player in FixedUpdate for physics consistency.
-            _rigidbody2D.AddForce(_movement * _accelaration * Time.fixedDeltaTime, ForceMode2D.Force);
+            _rigidbody2D.AddForce(_movement * _accelaration * Time.fixedDeltaTime, ForceMode2D.Impulse);
 
             // Clamp the player's velocity to prevent excessive speed.
             if (_rigidbody2D.linearVelocity.magnitude > _maxSpeed)

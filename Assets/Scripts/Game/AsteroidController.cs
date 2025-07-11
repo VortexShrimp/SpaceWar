@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEditor.ShaderGraph.Internal;
 
 namespace Assets.Scripts.Game
 {
@@ -19,11 +20,12 @@ namespace Assets.Scripts.Game
         float _currentHealth;
 
         [SerializeField]
+        Sprite[] _spriteStates;
+        
+        [SerializeField]
         [Tooltip("Damage dealt to the player on collision.")]
         float _playerCollisionDamage;
         public float PlayerCollisionDamage => _playerCollisionDamage;
-
-        GameObject[] _spriteStates;
 
         protected void Awake()
         {
@@ -38,12 +40,6 @@ namespace Assets.Scripts.Game
 
             // Set the health.
             _currentHealth = _maxHealth;
-
-            // Initialize the sprite states.
-            _spriteStates = new GameObject[3];
-            _spriteStates[0] = transform.Find("Sprite 1").gameObject;
-            _spriteStates[1] = transform.Find("Sprite 2").gameObject;
-            _spriteStates[2] = transform.Find("Sprite 3").gameObject;
 
             // Set the initial sprite state.
             SetSpriteStateActive(0);
@@ -87,10 +83,7 @@ namespace Assets.Scripts.Game
         /// <param name="index"></param>
         void SetSpriteStateActive(int index)
         {
-            for (int i = 0; i < _spriteStates.Length; i++)
-            {
-                _spriteStates[i].SetActive(i == index);
-            }
+            gameObject.GetComponent<SpriteRenderer>().sprite = _spriteStates[index];
         }
     }
 }
